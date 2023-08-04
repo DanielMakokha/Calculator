@@ -38,6 +38,31 @@
 
 
 </div>
+<script>
+    var current_operand,previous_operand;
+    var current_operation;
+
+    const button_number=document.querySelectorAll('[data-number]');
+    const button_operation=document.querySelectorAll('[data-operation]');
+    const button_delete=document.querySelector('[data-delete]');
+    const button_equal=document.querySelector('[data-equal]');
+    const clear=document.querySelector('[data-clear]');
+    var previous_operand_text=document.querySelector('.previous');
+    var current_operand_text=document.querySelector('.current');
+
+    //Adding a number when clicking a button
+    function add_number(button_number_par){
+        button_number.forEach(button_number_par =>{
+            button_number_par.addEventListener('click', () => {
+                //console.log('Number has been clicked')
+                if(button_number_par.textContent === '.'&& current_operand_text.textContent.includes('.')) return
+                current_operand_text.textContent=current_operand_text.textContent +button_number_par.innerHTML;
+                current_operand=current_operand_text.textContent;
+            })
+        })
+    }
+    add_number()
+</script>
     
 </body>
 </html>
