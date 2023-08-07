@@ -67,19 +67,21 @@
     button_operation.forEach(operation_button_par =>{
         operation_button_par.addEventListener('click',() =>{
             if(previous_operand_text.textContent.includes('/') ||previous_operand_text.textContent.includes('-') || previous_operand_text.textContent.includes('+') || previous_operand_text.textContent.includes('*') ){
-                let result;                
+                let result;         
+                const prev=parseFloat(previous_operand);
+                const current=parseFloat(current_operand);       
                 switch(current_operation){
                     case '+':
-                        result=current_operand+previous_operand;
+                        result=current+prev;
                         break
                     case '-':
-                        result=current_operand-previous_operand;
+                        result=prev-current;
                         break
                     case '*':
-                        result=current_operand*previous_operand;
+                        result=current*prev;
                         break
                     case '/':
-                        result=current_operand/previous_operand;
+                        result=current/prev;
                         break
                     default:
                         break
