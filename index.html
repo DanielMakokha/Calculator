@@ -62,6 +62,46 @@
         })
     }
     add_number()
+
+    //OPERATION BUTTONS
+    button_operation.forEach(operation_button_par =>{
+        operation_button_par.addEventListener('click',() =>{
+            if(previous_operand_text.textContent.includes('/') ||previous_operand_text.textContent.includes('-') || previous_operand_text.textContent.includes('+') || previous_operand_text.textContent.includes('*') ){
+                let result;                
+                switch(current_operation){
+                    case '+':
+                        result=current_operand+previous_operand;
+                        break
+                    case '-':
+                        result=current_operand-previous_operand;
+                        break
+                    case '*':
+                        result=current_operand*previous_operand;
+                        break
+                    case '/':
+                        result=current_operand/previous_operand;
+                        break
+                    default:
+                        break
+                }
+                console.log('The current is' +current_operand + 'the previous is' +previous_operand + 'the result is '+ result);
+               
+                previous_operand_text.textContent=result+operation_button_par.innerHTML;
+                current_operand_text.textContent='';
+                current_operand='';
+                previous_operand=result;
+                current_operation=operation_button_par.textContent
+            }
+            else{
+            previous_operand=current_operand;
+            current_operand='';
+            previous_operand_text.textContent=previous_operand + operation_button_par.textContent;
+            current_operand_text.textContent='';
+            current_operation=operation_button_par.textContent;
+            }
+            
+        })
+    })
 </script>
     
 </body>
