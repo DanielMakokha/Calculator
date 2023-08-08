@@ -86,7 +86,6 @@
                     default:
                         break
                 }
-                console.log('The current is' +current_operand + 'the previous is' +previous_operand + 'the result is '+ result);
                
                 previous_operand_text.textContent=result+operation_button_par.innerHTML;
                 current_operand_text.textContent='';
@@ -104,6 +103,44 @@
             
         })
     })
+    //EQUAL BUTTON
+    button_equal.addEventListener('click', ()=>  {
+        if(previous_operand_text.textContent.includes('/') ||previous_operand_text.textContent.includes('-') || previous_operand_text.textContent.includes('+') || previous_operand_text.textContent.includes('*') ){
+            let result;         
+            const prev=parseFloat(previous_operand);
+            const current=parseFloat(current_operand);       
+            switch(current_operation){
+                case '+':
+                    result=current+prev;
+                    break
+                case '-':
+                    result=prev-current;
+                    break
+                case '*':
+                    result=current*prev;
+                    break
+                case '/':
+                    result=current/prev;
+                    break
+                default:
+                    break
+            }
+           
+            current_operand_text.textContent=result;
+            current_operand=result;
+            previous_operand_text.textContent='';
+        }
+        else{
+
+        }
+    })
+    //BUTTON DELETE
+    button_delete.addEventListener('click', ()=>{
+        current_operand=current_operand.toString().slice(0,-1);
+        current_operand_text.textContent=current_operand;
+    })
+    
+
 </script>
     
 </body>
